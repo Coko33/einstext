@@ -1,0 +1,16 @@
+# Ignorar el entorno virtual
+venv/
+
+# Ignorar los modelos de Vosk
+modelos/
+
+# Ignorar archivos de compilación de Python
+__pycache__/
+*.pyc
+
+# Ignorar archivos de configuración de IDE
+.idea/
+.vscode/
+
+# Ignorar archivos temporales de sistema
+*.swp
