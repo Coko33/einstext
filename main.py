@@ -4,6 +4,8 @@ import queue
 import json
 import os
 from rapidfuzz import process
+from datos import entradas
+from animacion import reproducir_animacion_opencv
 
 # Configuración
 MODEL_PATH = "modelos/vosk-model-small-es-0.42"
@@ -34,7 +36,15 @@ def recognize_and_match():
                 result = json.loads(rec.Result())
                 voz_texto = result.get("text", "")
                 if voz_texto:
-                    buscar_fragmento(voz_texto)
+                    #buscar_fragmento(voz_texto)
+                    print("🎤🦜", voz_texto)
+                    entrada_encontrada = buscar_entrada(voz_texto)
+                    if entrada_encontrada:
+                        reproducir_animacion_opencv("./frames", repeticiones=10)
+                        print("🟢 Coincidencia encontrada:")
+                        print(entrada_encontrada["texto"])
+                    else:
+                        print("🔴 No se encontró coincidencia.")
 
 # def buscar_fragmento(texto_voz):
 #     mejor_match, score, idx = process.extractOne(texto_voz, lineas_texto)
@@ -42,6 +52,13 @@ def recognize_and_match():
 #     print(f"🎯 Mejor coincidencia: {mejor_match.strip()}")
 #     print(f"Similaridad: {score:.2f}%\n")
 
+def buscar_entrada(texto_usuario):
+    texto_usuario = texto_usuario.lower()
+    for entrada in entradas:
+        for tag in entrada["tags"]:
+            if tag.lower() in texto_usuario:
+                return entrada
+    return None
 
 def buscar_fragmento(texto_voz):
     mejor_match, score, idx = process.extractOne(texto_voz, lineas_texto)
