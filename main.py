@@ -5,7 +5,8 @@ import json
 import os
 from rapidfuzz import process
 from datos import entradas
-from animacion import reproducir_animacion_opencv
+from animacion import reproducir_animacion_opencv, mostrar_imagen_fija
+from matchSpacy import find_best_match
 
 # Configuración
 MODEL_PATH = "modelos/vosk-model-small-es-0.42"
@@ -38,9 +39,10 @@ def recognize_and_match():
                 if voz_texto:
                     #buscar_fragmento(voz_texto)
                     print("🎤🦜", voz_texto)
-                    entrada_encontrada = buscar_entrada(voz_texto)
+                    #entrada_encontrada = buscar_entrada(voz_texto)
+                    entrada_encontrada = find_best_match(voz_texto, entradas)
                     if entrada_encontrada:
-                        reproducir_animacion_opencv("./frames", repeticiones=10)
+                        reproducir_animacion_opencv("./frames", repeticiones=10, texto=entrada_encontrada["texto"])
                         print("🟢 Coincidencia encontrada:")
                         print(entrada_encontrada["texto"])
                     else:
@@ -81,6 +83,9 @@ def encontrar_parrafo(linea_encontrada):
 
 if __name__ == "__main__":
     try:
+        primer_frame = os.path.join("frames", sorted(os.listdir("frames"))[0])
+        mostrar_imagen_fija(primer_frame, texto="🎤 Esperando voz...")
+
         recognize_and_match()
     except KeyboardInterrupt:
         print("\nPrograma terminado por el usuario.")
