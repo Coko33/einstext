@@ -36,15 +36,15 @@ def recognize_and_match():
             data = q.get()
             if rec.AcceptWaveform(data):
                 result = json.loads(rec.Result())
-                voz_texto = result.get("text", "")
+                voz_texto = result.get("text", "") or "la plata"
                 if voz_texto:
                     #buscar_fragmento(voz_texto)
                     print("🎤🦜", voz_texto)
                     #entrada_encontrada = buscar_entrada(voz_texto)
                     entrada_encontrada = find_best_match(voz_texto, entradas)
                     if entrada_encontrada:
-                        entrada_fragmento = textwrap.shorten(entrada_encontrada["texto"], width=30, placeholder="...")
-                        reproducir_animacion_opencv("./frames", repeticiones=10, texto=entrada_fragmento)
+                        entrada_fragmento = textwrap.shorten(entrada_encontrada["texto"], width=435, placeholder="...")
+                        reproducir_animacion_opencv("./frames", repeticiones=20, texto=entrada_fragmento)
                         print("🟢 Coincidencia encontrada:")
                         print(entrada_fragmento)
                     else:
@@ -63,37 +63,3 @@ if __name__ == "__main__":
         print("\nPrograma terminado por el usuario.")
     finally:
         cv2.destroyAllWindows()
-
-
-# 💡 Tecnologías adicionales recomendadas
-#     • rapidfuzz (mejor que fuzzywuzzy, más rápido) → para hacer coincidencias de texto por similitud.
-#     • (Opcional) NLP básico con spaCy o NLTK si quisieras hacer búsquedas más "inteligentes" en el futuro.
-
-###OTRAS FUNCIONES###
-
-# def buscar_entrada(texto_usuario):
-#     texto_usuario = texto_usuario.lower()
-#     for entrada in entradas:
-#         for tag in entrada["tags"]:
-#             if tag.lower() in texto_usuario:
-#                 return entrada
-#     return None
-
-# def buscar_fragmento(texto_voz):
-#     mejor_match, score, idx = process.extractOne(texto_voz, lineas_texto)
-#     parrafo = encontrar_parrafo(mejor_match)
-#     print(f"\nEntrada de voz: {texto_voz}")
-#     print(f"🎯 Párrafo encontrado:\n{parrafo.strip()}")
-#     print(f"Similaridad: {score:.2f}%\n")
-
-# def encontrar_parrafo(linea_encontrada):
-#     with open(TEXTO_PATH, "r", encoding="utf-8") as f:
-#         texto_completo = f.read()
-
-#     parrafos = texto_completo.split('\n\n')  # Separar por párrafos
-
-#     for parrafo in parrafos:
-#         if linea_encontrada.strip() in parrafo:
-#             return parrafo
-
-#     return "❌ Párrafo no encontrado."
