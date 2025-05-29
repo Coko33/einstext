@@ -118,7 +118,6 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
             frames.append(frame)
         else:
             print(f"⚠️ No se pudo cargar {ruta}")
-
     if not frames:
         print("❌ No se pudo cargar ningún frame.")
         return
@@ -148,10 +147,22 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
     cv2.imshow("🗣️ Animación", frame_final)
     time.sleep(2)
     cv2.imshow("🗣️ Animación", opciones)
-    print("⏹️ Esperando cierre (ESC)...")
-    while True:
-        key = cv2.waitKey(100)
-        if key == 27:
-            break
 
-    cv2.destroyAllWindows()
+    # while True:
+    #     key = cv2.waitKey(100)
+    #     if key == 27:  # ESC
+    #         print("🚪 Saliste con ESC")
+    #         break
+    #     elif key == ord('c'):
+    #         print("⏩ Continuar")
+    #         break
+    #     elif key == ord('o'):
+    #         print("🔁 Otra pregunta")
+    #         break
+    #     elif key == ord('s'):
+    #         print("👋 Salir")
+    #         break
+
+    cv2.waitKey(1)  # Solo refrescar ventana
+    time.sleep(2)   # Mostrar las opciones unos segundos
+
