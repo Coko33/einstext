@@ -69,6 +69,7 @@ def recognize_and_match():
                         print("👋 Saliendo por comando de voz.")
                         break
                     elif "otra" in texto or "pregunta" in texto:
+                        mostrar_imagen_fija(primer_frame, texto="Preguntá lo que quieras sobre la visita de Einstein a la Argentina", color_texto=color_amarillo)
                         print("🔁 Nueva pregunta")
                         modo = "pregunta"
                     elif "continuar" in texto:
@@ -80,7 +81,7 @@ def recognize_and_match():
                                 reproducir_animacion_opencv("./frames", repeticiones=20, texto=fragmento)
                                 print("⏩ Continuando...")
                             else:
-                                mostrar_imagen_fija(primer_frame, texto="✅ Ya se mostró todo el contenido.", color_texto=color_amarillo)
+                                mostrar_imagen_fija(primer_frame, texto="Eso es todo! Preguntá lo que quieras sobre la visita de Einstein a la Argentina", color_texto=color_amarillo)
                                 print("🔚 Fin del contenido.")
                                 modo = "pregunta"
                         else:

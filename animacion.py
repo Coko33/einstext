@@ -145,7 +145,7 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
     )
     opciones = dibujar_opciones(frame_final, 'Continuar', 'Otra pregunta', 'Salir')
     cv2.imshow("🗣️ Animación", frame_final)
-    time.sleep(2)
+    time.sleep(1)
     cv2.imshow("🗣️ Animación", opciones)
 
     # while True:
@@ -164,5 +164,5 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
     #         break
 
     cv2.waitKey(1)  # Solo refrescar ventana
-    time.sleep(2)   # Mostrar las opciones unos segundos
+    time.sleep(1)   # Mostrar las opciones unos segundos
 
