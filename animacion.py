@@ -50,7 +50,7 @@ def dibujar_texto(canvas, texto, color_texto, margen=20, alto_caja=180):
     font_size = 18
     font = ImageFont.truetype(font_path, font_size)
 
-    max_chars_por_linea = ancho_canvas // (font_size // 2)
+    max_chars_por_linea = ancho_canvas // (font_size // 1.7)
     wrapped_text = textwrap.wrap(texto, width=max_chars_por_linea)
 
     for i, linea in enumerate(wrapped_text[:alto_caja // (font_size + 6)]):
@@ -147,22 +147,6 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
     cv2.imshow("🗣️ Animación", frame_final)
     time.sleep(1)
     cv2.imshow("🗣️ Animación", opciones)
-
-    # while True:
-    #     key = cv2.waitKey(100)
-    #     if key == 27:  # ESC
-    #         print("🚪 Saliste con ESC")
-    #         break
-    #     elif key == ord('c'):
-    #         print("⏩ Continuar")
-    #         break
-    #     elif key == ord('o'):
-    #         print("🔁 Otra pregunta")
-    #         break
-    #     elif key == ord('s'):
-    #         print("👋 Salir")
-    #         break
-
     cv2.waitKey(1)  # Solo refrescar ventana
     time.sleep(1)   # Mostrar las opciones unos segundos
 

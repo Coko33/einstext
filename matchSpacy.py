@@ -1,5 +1,5 @@
 import spacy
-nlp = spacy.load("es_core_news_sm")
+nlp = spacy.load("es_core_news_md")
 
 def find_best_match(user_question, entries):
     user_doc = nlp(user_question)

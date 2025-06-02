@@ -4,10 +4,10 @@ import queue
 import json
 import os
 import cv2
-from rapidfuzz import process
 from datos import entradas
 from animacion import reproducir_animacion_opencv, mostrar_imagen_fija
-from matchSpacy import find_best_match
+#from matchSpacy import find_best_match
+from matchSentenceTransformers import find_best_match_sentence_transformers
 import textwrap
 
 MODEL_PATH = "modelos/vosk-model-small-es-0.42"
@@ -46,14 +46,20 @@ def recognize_and_match():
                 print("🦜", texto)
 
                 if modo == "pregunta":
-                    entrada_encontrada = find_best_match(texto, entradas)
+                    #entrada_encontrada = find_best_match(texto, entradas)
+                    entrada_encontrada = find_best_match_sentence_transformers(texto, entradas)
                     if entrada_encontrada:
                         entrada_actual = entrada_encontrada["texto"]
                         lineas_fragmentadas = textwrap.wrap(entrada_actual, width=90)
-                        indice_fragmento = 0
+                        ultima_linea = lineas_fragmentadas[-1]
 
+                        indice_fragmento = 0
                         fragmento_lineas = lineas_fragmentadas[indice_fragmento:indice_fragmento + lineas_por_fragmento]
-                        fragmento = "\n".join(fragmento_lineas)
+                        if fragmento_lineas[-1] == ultima_linea:
+                            fragmento = "\n".join(fragmento_lineas)
+                        else:
+                            fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
+
 
                         reproducir_animacion_opencv("./frames", repeticiones=20, texto=fragmento)
                         print("🟢 Coincidencia encontrada:")
@@ -77,8 +83,11 @@ def recognize_and_match():
                             indice_fragmento += lineas_por_fragmento
                             if indice_fragmento < len(lineas_fragmentadas):
                                 fragmento_lineas = lineas_fragmentadas[indice_fragmento:indice_fragmento + lineas_por_fragmento]
-                                fragmento = "\n".join(fragmento_lineas)
-                                reproducir_animacion_opencv("./frames", repeticiones=20, texto=fragmento)
+                                if fragmento_lineas[-1] == ultima_linea:
+                                    fragmento = "\n".join(fragmento_lineas)
+                                else:
+                                    fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
+                                reproducir_animacion_opencv("./frames", repeticiones=10, texto=fragmento)
                                 print("⏩ Continuando...")
                             else:
                                 mostrar_imagen_fija(primer_frame, texto="Eso es todo! Preguntá lo que quieras sobre la visita de Einstein a la Argentina", color_texto=color_amarillo)
