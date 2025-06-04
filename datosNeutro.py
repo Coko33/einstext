@@ -1,7 +1,7 @@
 entradas = [
     {
         "id": 1,
-        "texto": "Luego de las gestiones que se venían desarrollando desde 1923, el 25 de Marzo de 1925, a las 8:30 de la mañana, llegué a Buenos Aires a bordo del Cap Polonio. Pocos días atrás había cumplido 46 años. Mi visita, gestionada y financiada por las Universidades de Buenos Aires, Córdoba, La Plata y Tucumán, junto con la Asociación Hebraica Argentina y la Institución Cultural Argentino-Germana, generó grandes expectativas, no sólo en el mundo académico y en la colectividad israelita, sino también en los medios de comunicación y en los círculos intelectuales de Argentina.",
+        "texto": "Luego de las gestiones que se venían desarrollando desde 1923, el 25 de Marzo de 1925, a las 8:30 de la mañana, llega a Buenos Aires a bordo del Cap Polonio Albert Einstein, quien pocos días atrás había cumplido 46 años. La visita del Premio Nobel (2021), gestionada y financiada por las Universidades de Buenos Aires, Córdoba, La Plata y Tucumán, junto con la Asociación Hebraica Argentina y la Institución Cultural Argentino-Germana, genera grandes expectativas, no sólo en el mundo académico y en la colectividad israelita, sino también en los medios de comunicación y en los círculos intelectuales locales.",
         "tags": [
             "llegada",
             "Buenos Aires",
@@ -20,8 +20,7 @@ entradas = [
             "expectativas públicas",
             "cuando",
             "financiada"
-        ],
-        "perso": "Einstein"
+        ]
     },
     {
         "id": 2,
@@ -38,12 +37,11 @@ entradas = [
             "periodística",
             "personalidad",
             "recepción pública"
-        ],
-        "perso": "Lugones"
+        ]
     },
     {
         "id": 3,
-        "texto": """La Prensa, en su edición del 24 de Marzo, anunciando la próxima llegada de Einstein, expresa: Esta noche pisará Einstein, por primera vez, la tierra argentina. Nuestras instituciones de cultura invitaron al gran sabio, al eximio pensador, sin preguntarle si era alemán o suizo, de raza germánica o semítica, ni se averiguó cuál era su fe. Saludamos pues al sabio, convencidos de que encontrará en la Argentina la acogida que merece por la labor que realizó en el campo de la ciencia y que ya le valiera tantas distinciones, entre ellas el tan codiciado Premio Nobel.\"""",
+        "texto": """La Prensa, en su edición del 24 de Marzo, anunciando la próxima llegada de Einstein, expresa: \"Esta noche pisará Einstein, por primera vez, la tierra argentina. Nuestras instituciones de cultura invitaron al gran sabio, al eximio pensador, sin preguntarle si era alemán o suizo, de raza germánica o semítica, ni se averiguó cuál era su fe. Saludamos pues al sabio, convencidos de que encontrará en la Argentina la acogida que merece por la labor que realizó en el campo de la ciencia y que ya le valiera tantas distinciones, entre ellas el tan codiciado Premio Nobel.\"""",
         "tags": [
             "Prensa",
             "Periodismo",
@@ -59,8 +57,7 @@ entradas = [
             "discurso",
             "religion",
             "Nazismo"
-        ], 
-        "perso": "Lugones"
+        ]
     },
     {
         "id": 4,
@@ -79,26 +76,11 @@ entradas = [
             "hebreo",
             "italiano",
             "multilingüismo"
-        ], 
-        "perso": "Lugones"
+        ]
     },
     {
         "id": 5,
-        "texto": """25 de marzo. Llegué a Buenos Aires en el S.S. Cap Polonio. 26 de marzo. Por la mañana entrevistas periodísticas en la mansión Wasserman. Al mediodía recorrido por Palermo y el Mercado de Abasto. Por la tarde agasajo en el Colegio Nacional de Buenos Aires, donde da una charla corta en francés."""
-    },
-    {
-        "texto": """27 de marzo. Por la noche recepción en la residencia de Alfredo Hirsch, socio de la empresa Bunge & Born y destacado intelectual y coleccionista de arte.28 de marzo. Primera conferencia científica.29 de abril. Domingo. Descanso en casa de los Wassermann."""
-    },
-    {    
-        "texto": """30 de marzo. Visita al diario La Prensa. Segunda conferencia científica.31 de marzo. Visita al diario judío Di Presse y a escuelas, hospitales y orfanatos sostenidos por esa colectividad. Paseo por el Tigre durante la tarde.1 de abril. Sobrevuela Buenos Aires en un avión alemán. Por la tarde lo reciben el presidente M. T. de Alvear y algunos ministros. Visita el Museo Etnográfico. Tercera conferencia científica. Paseo por Florida acompañado por Leopoldo Lugones, en cuya casa cena."""
-    },
-    {    
-        "texto": """2 de abril. Visita en tren a La Plata. Acto de apertura de los cursos universitarios del Colegio Nacional “Rafael Hernández”. Visita al Museo de Historia Natural.3 de abril. Almuerzo con autoridades de la Universidad de Buenos Aires en la sede del Jockey Club.4 de abril. Conferencia en la Facultad de Filosofía y Letras."""
-    },
-    {    
-        "texto": """5 de abril. Domingo. Viaje en automóvil a la quinta de los Wassermann en Llavallol. 6 de abril. Visita a Bernardo Houssay y a Eugenio Pablo Fortin. Cuarta conferencia científica. Reunión de la comunidad judía que celebra la inauguración de la Universidad Hebrea de Jerusalén. 7 de abril. Visita el Hospital de Clínicas acompañado por el Dr. José Arce, médico y rector de la UBA. 8, 9, 10 y 11 de abril. Durante los feriados de Semana Santa descansa en casa de los Wassermann en Llavallol."""
-    },
-    {    
+        "texto": """25 de marzo. Llegada a Buenos Aires en el S.S. Cap Polonio.\n26 de marzo. Por la mañana entrevistas periodísticas en la mansión Wasserman. Al mediodía recorrido por Palermo y el Mercado de Abasto. Por la tarde agasajo en el Colegio Nacional de Buenos Aires, donde da una charla corta en francés.\n27 de marzo. Por la noche recepción en la residencia de Alfredo Hirsch, socio de la empresa Bunge & Born y destacado intelectual y coleccionista de arte.\n28 de marzo. Primera conferencia científica.\n29 de abril. Domingo. Descanso en casa de los Wassermann.\n30 de marzo. Visita al diario La Prensa. Segunda conferencia científica.\n31 de marzo. Visita al diario judío Di Presse y a escuelas, hospitales y orfanatos sostenidos por esa colectividad. Paseo por el Tigre durante la tarde.\n1 de abril. Sobrevuela Buenos Aires en un avión alemán. Por la tarde lo reciben el presidente M. T. de Alvear y algunos ministros. Visita el Museo Etnográfico. Tercera conferencia científica. Paseo por Florida acompañado por Leopoldo Lugones, en cuya casa cena.\n2 de abril. Visita en tren a La Plata. Acto de apertura de los cursos universitarios del Colegio Nacional “Rafael Hernández”. Visita al Museo de Historia Natural.\n3 de abril. Almuerzo con autoridades de la Universidad de Buenos Aires en la sede del Jockey Club.\n4 de abril. Conferencia en la Facultad de Filosofía y Letras.\n5 de abril. Domingo. Viaje en automóvil a la quinta de los Wassermann en Llavallol\n6 de abril. Visita a Bernardo Houssay y a Eugenio Pablo Fortin. Cuarta conferencia científica. Reunión de la comunidad judía que celebra la inauguración de la Universidad Hebrea de Jerusalén.\n7 de abril. Visita el Hospital de Clínicas acompañado por el Dr. José Arce, médico y rector de la UBA.\n8, 9, 10 y 11 de abril. Durante los feriados de Semana Santa descansa en casa de los Wassermann en Llavallol.""",
         "tags": [
             "itinerario",
             "conferencias científicas",

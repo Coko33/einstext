@@ -6,6 +6,10 @@ import numpy as np
 import pyautogui
 import time
 
+font_path = "./fuentes/ttf/DejaVuSans.ttf"
+font_size = 18
+font = ImageFont.truetype(font_path, font_size)
+
 def obtener_dimensiones_pantalla():
     ancho, alto = pyautogui.size()
     return ancho, alto
@@ -46,10 +50,6 @@ def dibujar_texto(canvas, texto, color_texto, margen=20, alto_caja=180):
     img_pil = Image.fromarray(cv2.cvtColor(canvas, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(img_pil)
 
-    font_path = "DejaVuSans.ttf"
-    font_size = 18
-    font = ImageFont.truetype(font_path, font_size)
-
     max_chars_por_linea = ancho_canvas // (font_size // 1.7)
     wrapped_text = textwrap.wrap(texto, width=max_chars_por_linea)
 
@@ -72,10 +72,6 @@ def dibujar_opciones(canvas, izquierda="", centro="", derecha="", color_texto=(2
     # PIL para texto con UTF-8
     img_pil = Image.fromarray(cv2.cvtColor(canvas, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(img_pil)
-
-    font_path = "DejaVuSans.ttf"
-    font_size = 18
-    font = ImageFont.truetype(font_path, font_size)
 
     y_texto = alto_canvas - alto_caja + (alto_caja - font_size) // 2
 
