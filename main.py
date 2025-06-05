@@ -17,7 +17,7 @@ if not os.path.exists(MODEL_PATH):
 
 model = vosk.Model(MODEL_PATH)
 q = queue.Queue()
-primer_frame = os.path.join("frames", sorted(os.listdir("frames"))[0])
+primer_frame = os.path.join("frames/einstein", sorted(os.listdir("frames/einstein"))[0])
 color_amarillo = (255, 204, 31, 255)
 
 def callback(indata, frames, time, status):
@@ -61,7 +61,7 @@ def recognize_and_match():
                             fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
 
 
-                        reproducir_animacion_opencv("./frames", repeticiones=20, texto=fragmento)
+                        reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=20, texto=fragmento)
                         print("🟢 Coincidencia encontrada:")
                         print(fragmento)
                         modo = "comando"
@@ -87,7 +87,7 @@ def recognize_and_match():
                                     fragmento = "\n".join(fragmento_lineas)
                                 else:
                                     fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
-                                reproducir_animacion_opencv("./frames", repeticiones=10, texto=fragmento)
+                                reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=10, texto=fragmento)
                                 print("⏩ Continuando...")
                             else:
                                 mostrar_imagen_fija(primer_frame, texto="Eso es todo! Preguntá lo que quieras sobre la visita de Einstein a la Argentina", color_texto=color_amarillo)
