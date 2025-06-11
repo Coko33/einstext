@@ -27,7 +27,8 @@ def escalar_y_centrar_frame(frame, ancho_pantalla, alto_pantalla, alto_caja_text
     nuevo_alto = max(1, int(alto_frame_original * factor_escala))
     frame_redimensionado = cv2.resize(frame, (nuevo_ancho, nuevo_alto), interpolation=cv2.INTER_AREA)
 
-    canvas = np.full((alto_pantalla, ancho_pantalla, 3), fill_value=(246, 246, 245), dtype=np.uint8)
+    #fill_value=(246, 246, 245)
+    canvas = np.full((alto_pantalla, ancho_pantalla, 3), fill_value=(238, 250, 255), dtype=np.uint8)
 
     # Centrado
     x_offset = (ancho_pantalla - nuevo_ancho) // 2
@@ -37,7 +38,7 @@ def escalar_y_centrar_frame(frame, ancho_pantalla, alto_pantalla, alto_caja_text
     canvas[y_offset:y_offset + nuevo_alto, x_offset:x_offset + nuevo_ancho] = frame_redimensionado
     return canvas
 
-def dibujar_texto(canvas, texto, color_texto, margen=20, alto_caja=180):
+def dibujar_texto(canvas, texto, color_texto=None, margen=20, alto_caja=180):
     alto_canvas, ancho_canvas = canvas.shape[:2]
 
     # Caja de texto negra semitransparente

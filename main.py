@@ -35,6 +35,7 @@ def recognize_and_match():
         lineas_fragmentadas = []
         indice_fragmento = 0
         lineas_por_fragmento = 5
+        entradas_leidas = set()
 
         while True:
             data = q.get()
@@ -52,7 +53,6 @@ def recognize_and_match():
                         entrada_actual = entrada_encontrada["texto"]
                         lineas_fragmentadas = textwrap.wrap(entrada_actual, width=90)
                         ultima_linea = lineas_fragmentadas[-1]
-
                         indice_fragmento = 0
                         fragmento_lineas = lineas_fragmentadas[indice_fragmento:indice_fragmento + lineas_por_fragmento]
                         if fragmento_lineas[-1] == ultima_linea:
@@ -60,10 +60,11 @@ def recognize_and_match():
                         else:
                             fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
 
-
                         reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=20, texto=fragmento)
                         print("🟢 Coincidencia encontrada:")
                         print(fragmento)
+                        entradas_leidas.add(entrada_encontrada["id"])
+                        print(entradas_leidas)
                         modo = "comando"
                         
                     else:
