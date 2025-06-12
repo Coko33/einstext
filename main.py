@@ -39,15 +39,14 @@ def recognize_and_match():
         lineas_por_fragmento = 5
 
         def fragmentar_entrada(entrada_actual):
-            lineas_fragmentadas = textwrap.wrap(entrada_actual, width=90)
-            ultima_linea = lineas_fragmentadas[-1]
-            indice_fragmento = 0
-            fragmento_lineas = lineas_fragmentadas[indice_fragmento:indice_fragmento + lineas_por_fragmento]
-            if fragmento_lineas[-1] == ultima_linea:
+            lineas = textwrap.wrap(entrada_actual, width=90)
+            ultima = lineas[-1]
+            fragmento_lineas = lineas[indice_fragmento:indice_fragmento + lineas_por_fragmento]
+            if fragmento_lineas[-1] == ultima:
                 fragmento = "\n".join(fragmento_lineas)
             else:
                 fragmento = "\n".join(fragmento_lineas) + "...(continúa)"
-            return fragmento, ultima_linea
+            return fragmento, ultima, lineas
         
         def entrada_random():
             global entradas_leidas
@@ -71,7 +70,8 @@ def recognize_and_match():
                     entrada_encontrada = find_best_match_sentence_transformers(texto, entradas)
                     if entrada_encontrada:
                         entrada_actual = entrada_encontrada["texto"]
-                        fragmento, ultima_linea = fragmentar_entrada(entrada_actual)
+                        indice_fragmento = 0 
+                        fragmento, ultima_linea, lineas_fragmentadas = fragmentar_entrada(entrada_actual)
                         reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=20, texto=fragmento)
                         print("🟢 Coincidencia encontrada:")
                         print(fragmento)
@@ -83,14 +83,15 @@ def recognize_and_match():
                 elif modo == "comando":
                     if "cualquier" in texto or "tema" in texto:
                         entrada_actual = entrada_random()
-                        fragmento, ultima_linea = fragmentar_entrada(entrada_actual)
-                        reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=20, texto=fragmento)
+                        indice_fragmento = 0 
+                        fragmento, ultima_linea, lineas_fragmentadas = fragmentar_entrada(entrada_actual)
+                        reproducir_animacion_opencv("./frames/einstein/" if entrada_encontrada["perso"] == "Einstein" else "./frames/lugones/", repeticiones=10, texto=fragmento)
                     elif "otra" in texto or "pregunta" in texto:
                         mostrar_imagen_fija(primer_frame, texto="Preguntá lo que quieras sobre la visita de Einstein a la Argentina", color_texto=color_amarillo)
                         print("🔁 Nueva pregunta")
                         modo = "pregunta"
                     elif "continuar" in texto:
-                        if entrada_actual:
+                        if entrada_actual and lineas_fragmentadas:
                             indice_fragmento += lineas_por_fragmento
                             if indice_fragmento < len(lineas_fragmentadas):
                                 fragmento_lineas = lineas_fragmentadas[indice_fragmento:indice_fragmento + lineas_por_fragmento]

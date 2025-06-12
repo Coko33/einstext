@@ -1,4 +1,5 @@
 import cv2
+import sys
 import os
 import textwrap
 from PIL import ImageFont, ImageDraw, Image
@@ -6,9 +7,15 @@ import numpy as np
 import pyautogui
 import time
 
-font_path = "./fuentes/ttf/DejaVuSans.ttf"
+def ruta_recurso(rel_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, rel_path)
+    return os.path.join(os.path.abspath("."), rel_path)
+
+font = ImageFont.truetype(ruta_recurso("./fuentes/ttf/DejaVuSans.ttf"), 18)
+#font_path = "./fuentes/ttf/DejaVuSans.ttf"
 font_size = 18
-font = ImageFont.truetype(font_path, font_size)
+#font = ImageFont.truetype(font_path, font_size)
 
 def obtener_dimensiones_pantalla():
     ancho, alto = pyautogui.size()

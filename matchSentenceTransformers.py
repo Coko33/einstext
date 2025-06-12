@@ -1,5 +1,9 @@
 from sentence_transformers import SentenceTransformer, util
 
+#prod
+#model = SentenceTransformer('./modelos/models--sentence-transformers--all-MiniLM-L6-v2')
+
+#dev
 model = SentenceTransformer('all-MiniLM-L6-v2', cache_folder='./modelos/')
 #model = SentenceTransformer('all-mpnet-base-v2', cache_folder='./modelos/')
 
