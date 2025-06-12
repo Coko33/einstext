@@ -61,7 +61,7 @@ def dibujar_texto(canvas, texto, color_texto=None, margen=20, alto_caja=180):
     canvas = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
     return canvas
 
-def dibujar_opciones(canvas, izquierda="", centro="", derecha="", color_texto=(255, 204, 31, 255), alto_caja=60, margen=20):
+def dibujar_opciones(canvas, izquierda="", centro="", derecha="", color_texto=(255, 204, 31, 255), alto_caja=60, margen=40):
     alto_canvas, ancho_canvas = canvas.shape[:2]
 
     # Dibujar fondo semitransparente
@@ -140,9 +140,8 @@ def reproducir_animacion_opencv(carpeta_frames, duracion_por_frame=100, repetici
         color_texto=(),
         alto_caja=alto_caja_texto
     )
-    opciones = dibujar_opciones(frame_final, 'Continuar', 'Otra pregunta', 'Salir')
+    opciones = dibujar_opciones(frame_final, 'Continuar', 'Otra pregunta', 'Cualquier tema')
     cv2.imshow("🗣️ Animación", frame_final)
-    time.sleep(1)
     cv2.imshow("🗣️ Animación", opciones)
     cv2.waitKey(1)  # Solo refrescar ventana
     time.sleep(1)   # Mostrar las opciones unos segundos
